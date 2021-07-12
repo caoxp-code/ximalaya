@@ -2,12 +2,26 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "commitizen": "^4.2.3",
+    "cz-lerna-changelog": "^2.0.3",
+    "husky": "^6.0.0"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  },
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": ["**/egg", "**/egg/**"]
+  },
   "scripts": {
-    "dev": "lerna run --scope 'x-main' serve"
+    "c": "git-cz",
+    "main": "lerna run --stream --scope 'x-main' serve",
+    "find": "lerna run --scope x-find serve",
+    "channel": "lerna run --scope x-channel serve"
   }
 }
