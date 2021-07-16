@@ -15,7 +15,7 @@ module.exports = option => {
     if (isJson(body)) {
       Object.assign(defaultRet, body)
     } else if (body) {
-      defaultRet = body
+      defaultRet.data = body
     }
     ctx.body = defaultRet
   }

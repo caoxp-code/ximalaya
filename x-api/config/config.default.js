@@ -2,7 +2,7 @@ module.exports = {
   cluster: {
     listen: { // 设置启动信息
       port: 3000,
-      hostname: '10.201.40.52'
+      hostname: '10.201.140.75'
     }
   },
   keys: 'my-ximalaya-secret-key',
@@ -10,7 +10,7 @@ module.exports = {
   middleware: ['cors', 'parseBody'],
   // 配置cors，需要同时配置安全中的白名单
   security: {
-    domainWhiteList: ['http://10.201.40.52:8080/']
+    domainWhiteList: ['http://10.201.140.75:8080/']
   },
   //配置跨域信息
   cors: {
