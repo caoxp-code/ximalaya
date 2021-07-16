@@ -6,7 +6,7 @@
         <div v-for="(n, i) in menums" :key="`${i}`" @click="handleClickMenu(i + 1)" @mouseover="handleShowMenu(i === 1)" @mouseleave="handleHiddenMenu(i === 1)" :class="['group', 'relative', 'text-base', 'h-full', 'flex', 'flex-col', 'justify-between', 'items-center', menuIndex === i + 1 ? 'text-black' : 'text-gray-400', 'cursor-pointer', 'w-16', 'border-none']">
           <div></div>
           <div data-content="^" :class="[i === 1 ? 'after:content' : '', 'flex', 'items-center', 'menu-down-arrow']">{{n}}</div>
-          <div class="h-0.5 w-5 group-hover:bg-red-600"></div>
+          <div class="h-0.5 w-5 group-hover:bg-red-600" :class="{'bg-red-600': i === menuIndex - 1}"></div>
         </div>
       </div>
       <!-- 频道的下拉菜单 -->
@@ -21,36 +21,39 @@
   </header>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
 import logo from '@/assets/images/logo.png'
 import { GET_HEADET_MENU } from '@/store/mutations-types'
-export default {
-  data () {
-    return {
-      logo,
-      menuIndex: 1,
-      menums: ['发现', '频道', '我的'],
-      showSubMenu: false,
-      subMenus: []
+import { meunCategoryData } from '@/store/data'
+@Component
+export default class HeaderCom extends Vue {
+  // data属性内容
+  logo = logo
+  menuIndex = 1
+  menums: string[] = ['发现', '频道', '我的']
+  showSubMenu = false
+  subMenus: meunCategoryData[] = []
+
+  mounted ():void {
+    this.$store.dispatch(GET_HEADET_MENU).then(d => (this.subMenus = d))
+  }
+
+  // method内容
+  handleClickMenu (index: number):void {
+    this.menuIndex = index
+  }
+
+  handleShowMenu (isShow: boolean):void {
+    if (isShow) {
+      this.showSubMenu = true
+    } else {
+      this.showSubMenu = false
     }
-  },
-  mounted () {
-    this.$store.dispatch('GET_HEADET_MENU').then(d => (this.subMenus = d))
-  },
-  methods: {
-    handleClickMenu (index) {
-      this.menuIndex = index
-    },
-    handleShowMenu (isShow) {
-      if (isShow) {
-        this.showSubMenu = true
-      } else {
-        this.showSubMenu = false
-      }
-    },
-    handleHiddenMenu (isHidden) {
-      if (isHidden) this.showSubMenu = false
-    }
+  }
+
+  handleHiddenMenu (isHidden: boolean):void {
+    if (isHidden) this.showSubMenu = false
   }
 }
 </script>

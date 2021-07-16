@@ -8,7 +8,7 @@ import registerStart from './micro'
 Vue.config.productionTip = false
 
 // 启动主应用
-registerStart()
+registerStart({ sandbox: { strictStyleIsolation: true } })
 
 new Vue({
   router,
