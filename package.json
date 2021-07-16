@@ -21,7 +21,7 @@
   "scripts": {
     "c": "git-cz",
     "main": "lerna run --stream --scope 'x-main' serve",
-    "find": "lerna run --scope x-find serve",
+    "find": "lerna run --stream --scope x-find serve",
     "channel": "lerna run --scope x-channel serve"
   }
 }
