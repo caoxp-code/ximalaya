@@ -6,7 +6,7 @@ module.exports = {
     }
   },
   keys: 'my-ximalaya-secret-key',
-  xiami_api_host: 'https://www.ximalaya.com/revision',
+  xiami_api_host: 'https://www.ximalaya.com',
   middleware: ['cors', 'parseBody'],
   // 配置cors，需要同时配置安全中的白名单
   security: {
