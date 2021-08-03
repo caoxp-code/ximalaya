@@ -22,6 +22,7 @@
     "c": "git-cz",
     "main": "lerna run --stream --scope 'x-main' serve",
     "find": "lerna run --stream --scope x-find serve",
+    "xinfo": "lerna run --stream --scope x-info start",
     "channel": "lerna run --scope x-channel serve"
   }
 }
