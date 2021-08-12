@@ -1,0 +1,31 @@
+.catogryWrapper{
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.menuWrapper{
+  margin: 20px 0;
+}
+.menuPanel {
+  font-size: 12px;
+  line-height: 1.4;
+  display: inline-block;
+}
+.menu-item{
+  display: inline-block;
+}
+.menu-arrow{
+  color: #72727b;
+  padding: 0 3px;
+  vertical-align: 1px;
+}
+.menu-title{
+  color: #72727b;
+}
+.content-wrapper{
+  
+}
+.side-wrapper{
+  width: 240px;
+  margin-left: 20px;
+}
