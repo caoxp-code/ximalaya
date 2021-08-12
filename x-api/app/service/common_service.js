@@ -13,7 +13,7 @@ class CommonService extends Service {
       const opt = {method, data, dataType: 'json'}
       if (method === 'get') opt.dataAsQueryString = true
       const url = `${config.xiami_api_host}${querys[key[0]]}`
-      logger.info('xima url:%s', url)
+      logger.info('xima url:%s', url, opt)
       const ret = await ctx.curl(url, opt)
       return ret.data
     }
