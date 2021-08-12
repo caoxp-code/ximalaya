@@ -2,9 +2,9 @@
   <div class="slider_wrapper h-100 position-relative" :class="{full: isfull}">
     <div class="silder_panel w-100 h-100 position-relative overflow-hidden">
       <div class="silder_item overflow-hidden transition" :style ="createTransform(itemCount - 1 - i - step)" :data-id="step" v-for="(item, i) in items" :key="i">
-        <router-link :to="`/infoPage${item.url}`">
+        <div @click="handleToTargetPage(`/infoPage${item.url}`)">
           <img :src="item.coverPath" class="silder_item_img" alt="" srcset="">
-        </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -38,6 +38,10 @@ export default class SliderComp extends Vue {
     if (this.loop) {
       this.onLoopChanged(true)
     }
+  }
+
+  handleToTargetPage (url: string):void {
+    this.$setGlobalState({ link: { path: url } })
   }
 
   // 创建动态轮播

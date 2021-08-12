@@ -32,10 +32,11 @@ export async function bootstrap (): Promise<void> {
   console.log('bootstrap')
 }
 export async function mount (props: unknown): Promise<void> {
+  Vue.prototype.$setGlobalState = props.setGlobalState
   render(props)
 }
 export async function unmount (): Promise<void> {
-  vue.$distroy()
+  vue.$destroy()
   vue.$el.innerHTML = ''
   vue = null
   router = null
